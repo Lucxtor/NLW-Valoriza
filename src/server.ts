@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import express, { Request, Response, NextFunction } from "express";
 import "express-async-errors";
+import cors from "cors"
 
 import { router } from "./routes";
 
@@ -10,9 +11,17 @@ const app = express();
 
 app.use(express.json());
 
+var corsOptions = {
+  origin: 'http://localhost:19006',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
+
 app.use(router);
 
 app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
+  
   if( err instanceof Error ) {
     return response.status(400).json({
       error: err.message

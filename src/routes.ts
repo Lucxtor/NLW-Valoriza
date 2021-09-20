@@ -29,6 +29,6 @@ router.post("/compliments", ensureAuthenticated, createComplimentController.hand
 router.get("/users/compliments/send", ensureAuthenticated, listUserSendComplimentsController.handle);
 router.get("/users/compliments/receive", ensureAuthenticated, listUserReceiveComplimentsController.handle);
 router.get("/tags", ensureAuthenticated, listTagsController.handle);
-router.get("/users", ensureAuthenticated, ensureAdmin, listUsersController.handle);
+router.get("/users", ensureAuthenticated, /*ensureAdmin,*/ listUsersController.handle);
 
 export { router }
